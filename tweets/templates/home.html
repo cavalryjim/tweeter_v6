@@ -1,0 +1,15 @@
+<!-- tweets/templates/home.html -->
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title %}Tweeter | Welcome{% endblock %}
+
+{% block content %}
+  {% for tweet in object_list %}
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title">{{ tweet.body }}</h5>
+        <p class="card-text">{{ tweet.user }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
