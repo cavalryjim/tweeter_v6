@@ -14,6 +14,7 @@ psycopg2 = "*"
 clang = "*"
 django-bootstrap4 = "*"
 django-bootstrap-datepicker-plus = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
