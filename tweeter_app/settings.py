@@ -110,10 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# new
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly', # new
     ]
 }
 
