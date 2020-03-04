@@ -39,13 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # new
 
-    'rest_framework', # new
+    'rest_framework',
+    'rest_framework.authtoken',
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+    'rest_auth',
+    'rest_auth.registration', # new
     'bootstrap4',
     'bootstrap_datepicker_plus',
 
     'users',
     'tweets',
+    'api',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -113,8 +121,12 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.AllowAny',
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly', # new
-    ]
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+        'rest_framework.authentication.TokenAuthentication', # new
+        'rest_framework.authentication.SessionAuthentication', # new
+],
 }
 
 
@@ -138,13 +150,16 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # DEFAULT_FROM_EMAIL = 'no-reply@tweeter.com'
 # SERVER_EMAIL = 'admin@tweeter.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER =  os.getenv('SENDGRID_USERNAME') # new
-EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_PASSWORD') # new
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER =  os.getenv('SENDGRID_USERNAME') # new
+# EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_PASSWORD') # new
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+SITE_ID = 1 # new
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
